@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import ValidationComponent from './ValidationComponent/ValidationComponent.js'
 
 class App extends Component {
   state = {
@@ -15,6 +16,7 @@ class App extends Component {
   }
 
   render() {
+    const textLength = this.state.text.inputString.length;
     return (
       <div className="App">
         <h1>LET'S GO</h1>
@@ -26,8 +28,10 @@ class App extends Component {
             value={this.state.text.inputString}/>
         </form>
         <h3>
-          Text's length is {this.state.text.inputString.length}
+          Text's length is {textLength}
         </h3> 
+        <ValidationComponent 
+          textLength={textLength}/>
       </div>
     );
   }
