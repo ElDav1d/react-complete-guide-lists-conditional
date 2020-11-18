@@ -2,20 +2,32 @@ import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  textChangeHandler = () => {
-
+  state = {
+    text : {
+      inputString: ''
+    }
   }
-  
+
+  textChangeHandler = (event) => {
+    const textNew = {...this.state.text};
+    textNew.inputString = event.target.value;
+    this.setState({text:textNew})
+  }
+
   render() {
     return (
       <div className="App">
         <h1>LET'S GO</h1>
         <form>
-          <label className="App-input">Write some text</label>
+          <label className="App-input">Write some text bellow</label>
           <input
-            changed={this.textChangeHandler}
-            type="text"/>
+            onChange={this.textChangeHandler}
+            type="text"
+            value={this.state.text.inputString}/>
         </form>
+        <h3>
+          Text's length is {this.state.text.inputString.length}
+        </h3> 
       </div>
     );
   }
