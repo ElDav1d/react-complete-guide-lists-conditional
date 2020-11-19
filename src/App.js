@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import ValidationComponent from './ValidationComponent/ValidationComponent.js'
+import CharComponent from './CharComponent/CharComponent.js'
 
 class App extends Component {
   state = {
@@ -32,6 +33,12 @@ class App extends Component {
         </h3> 
         <ValidationComponent 
           textLength={textLength}/>
+        <ul>
+          <CharComponent char="a"/>
+          <CharComponent char="b"/>
+          <CharComponent char="c"/>
+          <CharComponent char="d"/>
+        </ul>
       </div>
     );
   }
