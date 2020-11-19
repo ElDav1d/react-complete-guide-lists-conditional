@@ -9,14 +9,29 @@ class App extends Component {
       inputString: ''
     }
   }
-
+  
   textChangeHandler = (event) => {
     const textNew = {...this.state.text};
     textNew.inputString = event.target.value;
-    this.setState({text:textNew})
+    this.setState({text:textNew});
   }
-
+  
   render() {
+    const stringToArray = [...this.state.text.inputString];
+    let list = null;
+    
+    if (stringToArray.length) {
+      list = (
+        <ul>
+          {stringToArray.map((item, index) =>{
+            return <CharComponent
+                char={item}
+                key={index} />
+          })}
+        </ul>
+      );
+    }
+    
     const textLength = this.state.text.inputString.length;
     return (
       <div className="App">
@@ -33,12 +48,7 @@ class App extends Component {
         </h3> 
         <ValidationComponent 
           textLength={textLength}/>
-        <ul>
-          <CharComponent char="a"/>
-          <CharComponent char="b"/>
-          <CharComponent char="c"/>
-          <CharComponent char="d"/>
-        </ul>
+        {list}
       </div>
     );
   }
