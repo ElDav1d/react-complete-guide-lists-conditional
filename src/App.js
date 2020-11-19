@@ -15,6 +15,13 @@ class App extends Component {
     textNew.inputString = event.target.value;
     this.setState({text:textNew});
   }
+
+  deleteCharHandler = (charIndex) => {
+    const newTextArray = [...{...this.state.text}.inputString];
+    newTextArray.splice(charIndex, 1);
+    newTextArray.inputString = newTextArray.join('');
+    this.setState({text:newTextArray})
+  }
   
   render() {
     const stringToArray = [...this.state.text.inputString];
@@ -26,6 +33,7 @@ class App extends Component {
           {stringToArray.map((item, index) =>{
             return <CharComponent
                 char={item}
+                click={() => this.deleteCharHandler(index)}
                 key={index} />
           })}
         </ul>
