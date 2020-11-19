@@ -1,14 +1,15 @@
 import React from 'react';
 
-const style = {
-  display: 'inline-block',
-  padding: '1rem',
-  textAlign: 'center',
-  margin: '1rem',
-  border: '1px solid black'
-}
 
 const char = (props) => {
+  const style = {
+    display: 'inline-block',
+    padding: '1rem',
+    textAlign: 'center',
+    margin: '1rem',
+    border: '1px solid black'
+  }
+  
   return (
     <li
       onClick={props.click}
