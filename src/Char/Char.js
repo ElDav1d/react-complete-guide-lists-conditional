@@ -8,7 +8,7 @@ const style = {
   border: '1px solid black'
 }
 
-const charComponent = (props) => {
+const char = (props) => {
   return (
     <li
       onClick={props.click}
@@ -16,4 +16,4 @@ const charComponent = (props) => {
   )
 };
 
-export default charComponent;
+export default char;

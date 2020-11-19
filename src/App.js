@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import ValidationComponent from './ValidationComponent/ValidationComponent.js'
-import CharComponent from './CharComponent/CharComponent.js'
+import Validation from './Validation/Validation.js'
+import Char from './Char/Char.js'
 
 class App extends Component {
   state = {
@@ -31,7 +31,7 @@ class App extends Component {
       list = (
         <ul>
           {stringToArray.map((item, index) =>{
-            return <CharComponent
+            return <Char
                 char={item}
                 click={() => this.deleteCharHandler(index)}
                 key={index} />
@@ -54,7 +54,7 @@ class App extends Component {
         <h3>
           Text's length is {textLength}
         </h3> 
-        <ValidationComponent 
+        <Validation 
           textLength={textLength}/>
         {list}
       </div>
