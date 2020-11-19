@@ -5,42 +5,37 @@ import Char from './Char/Char.js'
 
 class App extends Component {
   state = {
-    text : {
-      inputString: ''
-    }
+    inputString: ''
   }
   
   textChangeHandler = (event) => {
-    const textNew = {...this.state.text};
-    textNew.inputString = event.target.value;
-    this.setState({text:textNew});
+    const textNew= event.target.value;
+    this.setState({inputString: textNew});
   }
 
   deleteCharHandler = (charIndex) => {
-    const newTextArray = [...{...this.state.text}.inputString];
+    const newTextArray = this.state.inputString.split('');
     newTextArray.splice(charIndex, 1);
-    newTextArray.inputString = newTextArray.join('');
-    this.setState({text:newTextArray})
+    this.setState({inputString: newTextArray.join('')})
   }
   
   render() {
-    const stringToArray = [...this.state.text.inputString];
     let list = null;
-    
-    if (stringToArray.length) {
-      list = (
-        <ul>
-          {stringToArray.map((item, index) =>{
-            return <Char
-                char={item}
-                click={() => this.deleteCharHandler(index)}
-                key={index} />
-          })}
-        </ul>
-      );
-    }
-    
-    const textLength = this.state.text.inputString.length;
+
+    const listContent = (
+      <ul>
+        {this.state.inputString.split('').map((item, index) => {
+          return <Char
+            char={item}
+            click={() => this.deleteCharHandler(index)}
+            key={index} />
+        })}
+      </ul>
+    )
+
+    if (this.state.inputString.length) { list = listContent }
+
+    const textLength = this.state.inputString.length;
     return (
       <div className="App">
         <h1>LET'S GO</h1>
@@ -49,7 +44,7 @@ class App extends Component {
           <input
             onChange={this.textChangeHandler}
             type="text"
-            value={this.state.text.inputString}/>
+            value={this.state.inputString}/>
         </form>
         <h3>
           Text's length is {textLength}
